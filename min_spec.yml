@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API to outline bug in delegate class generation
+paths:
+  /file:
+    post:
+      summary: Upload a file via post request
+      operationId: uploadFile
+      responses:
+        '201':
+          description: File uploaded successfully
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+    get:
+      summary: Download file via get request
+      operationId: downloadFile
+      responses:
+        '200':
+          description: File requested from the server
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                description: Used with `binary` responses
+                example: attachment; filename="name.pdf"
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+
+
